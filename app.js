@@ -45,7 +45,7 @@ function initApp() {
 
   showCharacter(
     "http://hp-api.herokuapp.com/images/ron.jpg",
-    "Hermione GRRRRR",
+    "Hermione Granger",
     "Gryffindor",
     "01-03-1980",
     "Emma Wason"
