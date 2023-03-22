@@ -5,54 +5,74 @@ window.addEventListener("load", initApp);
 
 function initApp() {
   // Harry Potter
-  const potterName = "Harry Potter";
-  const potterGender = "male";
-  const potterHouse = "Gryffindor";
-  const potterDateOfBirth = "31-07-1980";
-  const potterAncestry = "half-blood";
-  const potterEyeColour = "green";
-  const potterHairColour = "black";
-  const potterActor = "Daniel Radcliffe";
-  const potterImage = "http://hp-api.herokuapp.com/images/harry.jpg";
+  const harry = {
+    name: "Harry Potter",
+    species: "human",
+    gender: "male",
+    house: "Gryffindor",
+    dateOfBirth: "31-07-1980",
+    yearOfBirth: 1980,
+    ancestry: "half-blood",
+    eyeColour: "green",
+    hairColour: "black",
+    wand: "holly,phoenix feather,11",
+    patronus: "stag",
+    hogwartsStudent: true,
+    hogwartsStaff: false,
+    actor: "Daniel Radcliffe",
+    alive: true,
+    image: "http://hp-api.herokuapp.com/images/harry.jpg",
+  };
 
-  console.log(
-    potterName,
-    potterGender,
-    potterHouse,
-    potterDateOfBirth,
-    potterAncestry,
-    potterEyeColour,
-    potterHairColour,
-    potterActor,
-    potterImage
-  );
+  // Hermione Granger
+  const hermione = {
+    name: "Hermione Granger",
+    species: "human",
+    gender: "female",
+    house: "Gryffindor",
+    dateOfBirth: "19-09-1979",
+    yearOfBirth: 1979,
+    ancestry: "muggleborn",
+    eyeColour: "brown",
+    hairColour: "brown",
+    wand: "vine,dragon heartstring",
+    patronus: "otter",
+    hogwartsStudent: true,
+    hogwartsStaff: false,
+    actor: "Emma Watson",
+    alive: true,
+    image: "http://hp-api.herokuapp.com/images/hermione.jpeg",
+  };
 
-  showCharacter(
-    potterImage,
-    potterName,
-    potterHouse,
-    potterDateOfBirth,
-    potterActor
-  );
+  // Ron Weasley
+  const ron = {
+    name: "Ron Weasley",
+    species: "human",
+    gender: "male",
+    house: "Gryffindor",
+    dateOfBirth: "01-03-1980",
+    yearOfBirth: 1980,
+    ancestry: "pure-blood",
+    eyeColour: "blue",
+    hairColour: "red",
+    wand: "willow,unicorn tail-hair,14",
+    patronus: "Jack Russell terrier",
+    hogwartsStudent: true,
+    hogwartsStaff: false,
+    actor: "Rupert Grint",
+    alive: true,
+    image: "http://hp-api.herokuapp.com/images/ron.jpg",
+  };
 
-  showCharacter(
-    "http://hp-api.herokuapp.com/images/ron.jpg",
-    "Ron Weasley",
-    "Gryffindor",
-    "01-03-1980",
-    "Rupert Grint"
-  );
+  showCharacter(harry);
+  showCharacter(ron);
+  showCharacter(hermione);
 
-  showCharacter(
-    "http://hp-api.herokuapp.com/images/ron.jpg",
-    "Hermione Granger",
-    "Gryffindor",
-    "01-03-1980",
-    "Emma Wason"
-  );
+  //
 }
 
-function showCharacter(image, name, house, dateOfBirth, actor) {
+function showCharacter(character) {
+  console.log(character);
   //   const articleElement = document.createElement("article");
   //   const imageElement = document.createElement("img");
   //   const nameElement = document.createElement("h2");
@@ -88,13 +108,21 @@ function showCharacter(image, name, house, dateOfBirth, actor) {
 
   const myHtml = `
 			<article>
-				<img src="${image}">
-				<h2> Full name: ${name}</h2>
-                <p>Date of Birth: ${dateOfBirth}</p>
-                <p>House: ${house}</p>
-                <p>${name} is played by actor: ${actor}</p>
+				<img src="${character.image}">
+				<h2> Full name: ${character.name}</h2>
+                <p>Date of Birth: ${character.dateOfBirth}</p>
+                <p>House: ${character.house}</p>
+                <p>${character.name} is played by actor: ${character.actor}</p>
 			</article>
 	`;
 
   document.querySelector("#characters").insertAdjacentHTML("beforeend", myHtml);
+
+  document
+    .querySelector("#characters article:last-child")
+    .addEventListener("click", characterClicked);
+
+  function characterClicked() {
+    document.querySelector("dialog").showModal();
+  }
 }
