@@ -118,11 +118,32 @@ function showCharacter(character) {
 
   document.querySelector("#characters").insertAdjacentHTML("beforeend", myHtml);
 
+  // kan clicke på karakter
   document
     .querySelector("#characters article:last-child")
     .addEventListener("click", characterClicked);
 
+  // funktion inde i funtion og åbner vinduet
   function characterClicked() {
     document.querySelector("dialog").showModal();
   }
 }
+
+const butters = {
+  name: `Leopold "Butters" Stotch`,
+  nickname:
+    "Inspector Butters, Marjorine, Mantequilla, Paladin Butters the Merciful, Professor Chaos",
+  image:
+    "http://southparkstudios.mtvnimages.com/shared/characters/kids/butters-stotch.png",
+  occupation: "Student",
+  age: 10,
+  voicedBy: "Matt Stone",
+  gender: "Male",
+  religion: "Roman Catholic , Temporary: Blaintologist*",
+  catchPhrase: "Do you know what i am saying?",
+  hairColor: "Blond",
+  schoolGrade: 4,
+  episodes: "S01E01 to S26E05",
+  appearances: 317,
+  firstAppearance: "S01E01",
+};
